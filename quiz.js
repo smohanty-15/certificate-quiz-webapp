@@ -1,16 +1,55 @@
 const quizData = [
-    { question: "What does HTML stand for?", options: ["Hyper Trainer Marking Language", "Hyper Text Markup Language", "Hyper Text Marketing Language", "Hyper Tool Multi Language"], answer: 1 },
-    { question: "Which CSS property controls the text size?", options: ["font-style", "text-size", "font-size", "text-style"], answer: 2 },
-    { question: "Inside which HTML element do we put the JavaScript?", options: ["<js>", "<javascript>", "<script>", "<scripting>"], answer: 2 },
-    { question: "Which company developed JavaScript?", options: ["Netscape", "Bell Labs", "Sun Microsystems", "IBM"], answer: 0 },
-    { question: "What does CSS stand for?", options: ["Creative Style System", "Computer Style Sheet", "Cascading Style Sheets", "Colorful Style Sheets"], answer: 2 },
-    { question: "Which HTML tag is used to define an internal style sheet?", options: ["<style>", "<css>", "<script>", "<link>"], answer: 0 },
-    { question: "How do you write 'Hello World' in an alert box?", options: ["msg('Hello World')", "alertBox('Hello World')", "msgBox('Hello World')", "alert('Hello World')"], answer: 3 },
-    { question: "Which is the correct CSS syntax?", options: ["body:color=black;", "{body;color:black;}", "body {color: black;}", "{body:color=black;}"], answer: 2 },
-    { question: "Which HTML attribute is used to define inline styles?", options: ["styles", "style", "class", "font"], answer: 1 },
-    { question: "Which property is used to change background color?", options: ["color", "bgcolor", "background-color", "backgroundColor"], answer: 2 }
+  {
+    question: "When is Indian Independence Day celebrated?",
+    options: ["January 26th", "October 2nd", "August 15th", "December 31st"],
+    answer: 2
+  },
+  {
+    question: "From which country did India gain independence?",
+    options: ["France", "Germany", "Great Britain", "Portugal"],
+    answer: 2
+  },
+  {
+    question: "Who was the first Prime Minister of independent India?",
+    options: ["Mahatma Gandhi", "Sardar Vallabhbhai Patel", "Jawaharlal Nehru", "Dr. B.R. Ambedkar"],
+    answer: 2
+  },
+  {
+    question: "What are the colors of the Indian National Flag?",
+    options: ["Red, White, and Blue", "Green, Yellow, and Red", "Saffron, White, and Green", "Blue, White, and Red"],
+    answer: 2
+  },
+  {
+    question: "What is the national anthem of India?",
+    options: ["Vande Mataram", "Sare Jahan Se Acha", "Ae Mere Watan Ke Logo", "Jana Gana Mana"],
+    answer: 3
+  },
+  {
+    question: "Who is credited with designing the Indian National Flag?",
+    options: ["Mahatma Gandhi", "Jawaharlal Nehru", "Pingali Venkayya", "Rabindranath Tagore"],
+    answer: 2
+  },
+  {
+    question: "What is the name of the symbol at the center of the Indian National Flag?",
+    options: ["Charkha (Spinning Wheel)", "Lotus", "Ashoka Chakra", "Sun"],
+    answer: 2
+  },
+  {
+    question: "What does the Ashoka Chakra on the Indian flag symbolize?",
+    options: ["Wealth and prosperity", "Unity and strength", "The wheel of the law of Dharma", "Peace and harmony"],
+    answer: 2
+  },
+  {
+    question: "What major movement initiated by Mahatma Gandhi in 1942 was a significant step towards India's independence?",
+    options: ["Non-Cooperation Movement", "Civil Disobedience Movement", "Quit India Movement", "Swadeshi Movement"],
+    answer: 2
+  },
+  {
+    question: "Which British Parliament act formally granted India its independence?",
+    options: ["Government of India Act 1935", "Rowlatt Act", "Indian Independence Act 1947", "Charter Act of 1833"],
+    answer: 2
+  }
 ];
-
 let currentQuestion = 0;
 let score = 0;
 
