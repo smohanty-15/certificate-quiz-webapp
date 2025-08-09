@@ -148,13 +148,14 @@ const quizData = [
 
 // Shuffle and pick 10 random questions
 function getRandomQuestions(arr, num) {
-    let shuffled = arr.slice().sort(() => Math.random() - 0.5);
+    let shuffled = arr.slice().sort(() => Math.random() - 0.10);
     return shuffled.slice(0, num);
 }
 
 const selectedQuestions = getRandomQuestions(quizData, 10);
 let currentQuestion = 0;
 let score = 0;
+let userAnswers = []; // Store user's answers
 
 const questionEl = document.getElementById("question");
 const optionsEl = document.getElementById("options");
@@ -173,6 +174,7 @@ function loadQuestion() {
 }
 
 function checkAnswer(selected) {
+    userAnswers.push(selected); // Save user's answer
     if (selected === selectedQuestions[currentQuestion].answer) {
         score++;
     }
@@ -180,14 +182,32 @@ function checkAnswer(selected) {
     if (currentQuestion < selectedQuestions.length) {
         loadQuestion();
     } else {
-        let percentage = (score / selectedQuestions.length) * 100;
-        if (percentage >= 70) {
-            window.location.href = "certificate.html";
-        } else {
-            alert("You failed. Your score: " + percentage + "%. Try again!");
-            window.location.href = "index.html";
-        }
+        showReview(); // Show review after quiz ends
     }
+}
+
+function showReview() {
+    let percentage = (score / selectedQuestions.length) * 100;
+    let reviewHtml = `<h2>Quiz Review</h2>
+        <p>Your score: ${score}/${selectedQuestions.length} (${percentage}%)</p>`;
+    selectedQuestions.forEach((q, i) => {
+        const userAnswer = userAnswers[i] !== undefined ? q.options[userAnswers[i]] : "No answer";
+        const correctAnswer = q.options[q.answer];
+        reviewHtml += `
+            <div>
+                <strong>Q${i + 1}: ${q.question}</strong><br>
+                Your answer: <span style="color:${userAnswer === correctAnswer ? 'green' : 'red'}">${userAnswer}</span><br>
+                Correct answer: <span style="color:green">${correctAnswer}</span>
+            </div>
+            <hr>
+        `;
+    });
+    document.body.innerHTML = reviewHtml;
+    // Optionally, add a button to restart the quiz
+    const restartBtn = document.createElement("button");
+    restartBtn.textContent = "Try Again";
+    restartBtn.onclick = () => window.location.href = "index.html";
+    document.body.appendChild(restartBtn);
 }
 
 loadQuestion();
