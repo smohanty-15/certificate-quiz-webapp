@@ -2,20 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Certificate</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container center">
-        <h2>🎉 Congratulations! 🎉</h2>
-        <p>Enter your name to generate your certificate:</p>
-        <input type="text" id="nameInput" placeholder="Your Name">
-        <button id="generateBtn">Generate Certificate</button>
-        <canvas id="certificateCanvas" width="800" height="600"></canvas>
-        <br>
-        <button id="downloadBtn">Download Certificate</button>
-    </div>
+    <h1>Congratulations!</h1>
+    <p>You passed the quiz and earned your certificate.</p>
+    <p id="scorePercent"></p>
+    <input type="text" id="nameInput" placeholder="Enter your name">
+    <button id="generateBtn">Generate Certificate</button>
+    <button id="downloadBtn">Download Certificate</button>
+    <canvas id="certificateCanvas" width="800" height="600"></canvas>
     <script src="certificate.js"></script>
+    <script>
+        // Show percentage from localStorage
+        const percent = localStorage.getItem('quizPercentage');
+        document.getElementById('scorePercent').textContent = `Your Score: ${percent}%`;
+    </script>
 </body>
 </html>

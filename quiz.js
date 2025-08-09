@@ -182,12 +182,21 @@ function checkAnswer(selected) {
     if (currentQuestion < selectedQuestions.length) {
         loadQuestion();
     } else {
-        showReview(); // Show review after quiz ends
+        finishQuiz();
     }
 }
 
-function showReview() {
-    let percentage = (score / selectedQuestions.length) * 100;
+function finishQuiz() {
+    let percentage = Math.round((score / selectedQuestions.length) * 100);
+    if (percentage >= 80) {
+        localStorage.setItem('quizPercentage', percentage);
+        window.location.href = "certificate.html";
+    } else {
+        showReview(percentage);
+    }
+}
+
+function showReview(percentage) {
     let reviewHtml = `<h2>Quiz Review</h2>
         <p>Your score: ${score}/${selectedQuestions.length} (${percentage}%)</p>`;
     selectedQuestions.forEach((q, i) => {
@@ -203,7 +212,6 @@ function showReview() {
         `;
     });
     document.body.innerHTML = reviewHtml;
-    // Optionally, add a button to restart the quiz
     const restartBtn = document.createElement("button");
     restartBtn.textContent = "Try Again";
     restartBtn.onclick = () => window.location.href = "index.html";

@@ -25,6 +25,11 @@ function generateCertificate(name) {
 
     ctx.font = "16px Arial";
     ctx.fillText("Date: " + new Date().toLocaleDateString(), canvas.width / 2, 450);
+
+    // Print percentage
+    const percent = localStorage.getItem('quizPercentage') || '';
+    ctx.font = "20px Arial";
+    ctx.fillText("Score: " + percent + "%", canvas.width / 2, 500);
 }
 
 document.getElementById('generateBtn').addEventListener('click', () => {
