@@ -148,7 +148,7 @@ const quizData = [
 
 // Shuffle and pick 10 random questions
 function getRandomQuestions(arr, num) {
-    let shuffled = arr.slice().sort(() => Math.random() - 0.10);
+    let shuffled = arr.slice().sort(() => Math.random() - 0.5);
     return shuffled.slice(0, num);
 }
 
