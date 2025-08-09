@@ -188,7 +188,7 @@ function checkAnswer(selected) {
 
 function finishQuiz() {
     let percentage = Math.round((score / selectedQuestions.length) * 100);
-    if (percentage >= 80) {
+    if (percentage >= 30) { // Pass percentage set to 30%
         localStorage.setItem('quizPercentage', percentage);
         window.location.href = "certificate.html";
     } else {
