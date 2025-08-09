@@ -50,6 +50,14 @@ const quizData = [
     answer: 2
   }
 ];
+
+// Shuffle and pick 5 random questions
+function getRandomQuestions(arr, num) {
+    let shuffled = arr.slice().sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, num);
+}
+
+const selectedQuestions = getRandomQuestions(quizData, 5);
 let currentQuestion = 0;
 let score = 0;
 
@@ -58,7 +66,7 @@ const optionsEl = document.getElementById("options");
 const nextBtn = document.getElementById("nextBtn");
 
 function loadQuestion() {
-    let q = quizData[currentQuestion];
+    let q = selectedQuestions[currentQuestion];
     questionEl.textContent = q.question;
     optionsEl.innerHTML = "";
     q.options.forEach((option, index) => {
@@ -70,14 +78,14 @@ function loadQuestion() {
 }
 
 function checkAnswer(selected) {
-    if (selected === quizData[currentQuestion].answer) {
+    if (selected === selectedQuestions[currentQuestion].answer) {
         score++;
     }
     currentQuestion++;
-    if (currentQuestion < quizData.length) {
+    if (currentQuestion < selectedQuestions.length) {
         loadQuestion();
     } else {
-        let percentage = (score / quizData.length) * 100;
+        let percentage = (score / selectedQuestions.length) * 100;
         if (percentage >= 80) {
             window.location.href = "certificate.html";
         } else {
@@ -88,3 +96,5 @@ function checkAnswer(selected) {
 }
 
 loadQuestion();
+
+
