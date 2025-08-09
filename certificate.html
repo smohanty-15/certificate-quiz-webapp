@@ -7,28 +7,65 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
-            margin: 20px;
+            margin: 30px;
+            background-color: #f9f9f9;
         }
         #certificateCanvas {
             border: 2px solid #333;
-            margin-top: 20px;
+            margin-top: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-radius: 10px;
         }
         #nameInput {
-            font-size: 18px;
-            padding: 8px;
-            width: 300px;
-            margin-top: 15px;
+            font-size: 20px;
+            padding: 10px 12px;
+            width: 350px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            margin-top: 20px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+        #nameInput:focus {
+            border-color: #138808; /* green */
+            outline: none;
         }
         button {
-            font-size: 16px;
-            padding: 10px 15px;
-            margin: 10px 5px;
+            font-size: 18px;
+            padding: 12px 22px;
+            margin: 15px 8px;
+            border: none;
+            border-radius: 6px;
             cursor: pointer;
+            background: linear-gradient(45deg, #FF9933, #138808, #000080);
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            transition: background 0.3s ease;
+        }
+        button:hover:not(:disabled) {
+            background: linear-gradient(45deg, #E67E22, #0F7700, #001050);
+        }
+        button:disabled {
+            background: #aaa;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        h1 {
+            font-weight: 700;
+            color: #000080;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        p {
+            font-size: 20px;
+            font-weight: 600;
+            color: #444;
         }
         #scorePercent {
-            font-size: 20px;
+            font-size: 22px;
+            font-weight: 700;
             margin-top: 10px;
-            font-weight: bold;
+            color: #138808;
         }
     </style>
 </head>
@@ -37,12 +74,12 @@
     <p>You passed the quiz and earned your certificate.</p>
     <p id="scorePercent"></p>
 
-    <input type="text" id="nameInput" placeholder="Enter your name" />
+    <input type="text" id="nameInput" placeholder="Enter your name" aria-label="Enter your name" />
     <br/>
     <button id="generateBtn">Generate Certificate</button>
     <button id="downloadBtn" disabled>Download Certificate</button>
 
-    <canvas id="certificateCanvas" width="800" height="600"></canvas>
+    <canvas id="certificateCanvas" width="800" height="600" aria-label="Certificate preview"></canvas>
 
     <script src="certificate.js"></script>
     <script>
